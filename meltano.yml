@@ -35,7 +35,11 @@ plugins:
       label: Start Date
       description: Initial date to start extracting data from
 
-    # TODO: Declare required settings here:
+    - name: api-key
+      kind: password
+      label: API Key
+      description: The token to authenticate against the API service
+      sensitive: true
     settings_group_validation:
     - [username, password]
 
