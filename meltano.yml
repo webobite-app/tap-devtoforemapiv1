@@ -18,7 +18,7 @@ plugins:
     - about
     - stream-maps
     config:
-      filename: configs/devto.yml
+      filename: configs/devto/devto.yml
 
       api-key: '{{ env.TAP_DEVTOFOREMAPIV1_API_KEY }}'
       start_date: '{{ env.TAP_DEVTOFOREMAPIV1_START_DATE }}'
@@ -35,7 +35,7 @@ plugins:
     - about
     - stream-maps
     config:
-      filename: configs/wordpress.yml
+      filename: configs/wordpress/wordpress.yml
 
   - name: tap-hashnode
     namespace: tap_hashnode
@@ -47,7 +47,7 @@ plugins:
     - about
     - stream-maps
     config:
-      filename: configs/hashnode.yml
+      filename: configs/hashnode/hashnode.yml
 
   loaders:
   - name: target-jsonl
