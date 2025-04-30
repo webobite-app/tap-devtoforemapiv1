@@ -1,0 +1,82 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Comment",
+    "description": "A top-level comment (with nested children) as returned by GET /comments?article_id={id}",
+    "type": "object",
+    "required": [
+        "type_of",
+        "id",
+        "created_at",
+        "body_html",
+        "user",
+        "children"
+    ],
+    "properties": {
+        "type_of": {
+            "type": "string",
+            "enum": [
+                "comment"
+            ]
+        },
+        "id": {
+            "type": [
+                "integer",
+                "string"
+            ]
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "body_html": {
+            "type": "string"
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "twitter_username": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "github_username": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "website_url": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "uri"
+                },
+                "profile_image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "profile_image_90": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "children": {
+            "type": "array",
+            "items": {
+                "$ref": "#"
+            }
+        }
+    }
+}

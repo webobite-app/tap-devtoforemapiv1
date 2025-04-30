@@ -1,0 +1,40 @@
+# streams.yml
+
+streams:
+  - name: articles
+    path: /articles
+    method: GET
+    primary_key: [id]
+    replication_key: published_timestamp
+    pagination:
+      style: offset
+      page_param: page
+      size_param: per_page
+      default_size: 30
+      max_size_env: API_PER_PAGE_MAX
+    request_params:
+      tag: "{{ config.tag }}"
+      tags: "{{ config.tags }}"
+      tags_exclude: "{{ config.tags_exclude }}"
+      username: "{{ config.username }}"
+      state: "{{ config.state }}"
+      top: "{{ config.top }}"
+      collection_id: "{{ config.collection_id }}"
+    schema_uri: schemas/article.json
+
+  - name: comments
+    path: /articles/{article_id}/comments
+    method: GET
+    primary_key: [id]
+    replication_key: created_at
+    pagination:
+      style: offset
+      page_param: page
+      size_param: per_page
+      default_size: 30
+      max_size_env: API_PER_PAGE_MAX
+    request_params:
+      article_id: "{{ config.article_id }}"
+      page: "{{ config.comment_page }}"
+      per_page: "{{ config.comment_per_page }}"
+    schema_uri: schemas/comment.json

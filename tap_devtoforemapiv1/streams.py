@@ -8,6 +8,7 @@ from singer_sdk.typing import (
     StringType,
 )
 
+# V2: Custom adpating
 class ArticlesStream(RESTStream):
     """DEV.to articles stream"""
     name = "articles"

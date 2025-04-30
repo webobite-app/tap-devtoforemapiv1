@@ -19,12 +19,7 @@ plugins:
     - stream-maps
     config:
       filename: configs/devto/devto.yml
-
-      api-key: '{{ env.TAP_DEVTOFOREMAPIV1_API_KEY }}'
-      start_date: '{{ env.TAP_DEVTOFOREMAPIV1_START_DATE }}'
-      blog_slug: '{{ env.TAP_DEVTOFOREMAPIV1_BLOG_SLUG }}'
-      include_comments: '{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_COMMENTS }}'
-      include_tags: '{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_TAGS }}'
+      streams: configs/devto/streams.yml
   - name: tap-wordpress
     namespace: tap_wordpress
     pip_url: -e .
