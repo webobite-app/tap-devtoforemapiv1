@@ -45,7 +45,7 @@ class devtoForemAPIV1Stream(RESTStream):
         return APIKeyAuthenticator.create_for_stream(
             self,
             key="x-api-key",
-            value=self.config.get("auth_token", ""),
+            value=self.config.get("api-key", ""),
             location="header",
         )
 

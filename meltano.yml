@@ -1,6 +1,6 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: "tap-devtoforemapiv1"
+project_id: tap-devtoforemapiv1
 default_environment: test
 venv:
   backend: uv
@@ -8,8 +8,8 @@ environments:
 - name: test
 plugins:
   extractors:
-  - name: "tap-devtoforemapiv1"
-    namespace: "tap_devtoforemapiv1"
+  - name: tap-devtoforemapiv1
+    namespace: tap_devtoforemapiv1
     pip_url: -e .
     capabilities:
     - state
@@ -17,35 +17,37 @@ plugins:
     - discover
     - about
     - stream-maps
-
-    # TODO: Declare settings and their types here:
-    settings:
-    - name: username
-      label: Username
-      description: The username to use for authentication
-
-    - name: password
-      kind: password
-      label: Password
-      description: The password to use for authentication
-      sensitive: true
-
-    - name: start_date
-      kind: date_iso8601
-      label: Start Date
-      description: Initial date to start extracting data from
-
-    - name: api-key
-      kind: password
-      label: API Key
-      description: The token to authenticate against the API service
-      sensitive: true
-    settings_group_validation:
-    - [username, password]
-
-    # TODO: Declare default configuration values here:
     config:
-      start_date: '2010-01-01T00:00:00Z'
+      filename: configs/devto.yml
+
+      api-key: '{{ env.TAP_DEVTOFOREMAPIV1_API_KEY }}'
+      start_date: '{{ env.TAP_DEVTOFOREMAPIV1_START_DATE }}'
+      blog_slug: '{{ env.TAP_DEVTOFOREMAPIV1_BLOG_SLUG }}'
+      include_comments: '{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_COMMENTS }}'
+      include_tags: '{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_TAGS }}'
+  - name: tap-wordpress
+    namespace: tap_wordpress
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    - about
+    - stream-maps
+    config:
+      filename: configs/wordpress.yml
+
+  - name: tap-hashnode
+    namespace: tap_hashnode
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    - about
+    - stream-maps
+    config:
+      filename: configs/hashnode.yml
 
   loaders:
   - name: target-jsonl
