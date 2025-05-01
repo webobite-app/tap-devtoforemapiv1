@@ -1,0 +1,203 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Article",
+    "description": "A published DEV article as returned by GET /articles",
+    "type": "object",
+    "required": [
+        "type_of",
+        "id",
+        "title",
+        "description",
+        "cover_image",
+        "readable_publish_date",
+        "social_image",
+        "tag_list",
+        "tags",
+        "slug",
+        "path",
+        "url",
+        "canonical_url",
+        "positive_reactions_count",
+        "public_reactions_count",
+        "created_at",
+        "edited_at",
+        "crossposted_at",
+        "published_at",
+        "last_comment_at",
+        "published_timestamp",
+        "reading_time_minutes",
+        "user"
+    ],
+    "properties": {
+        "type_of": {
+            "type": "string"
+        },
+        "id": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "cover_image": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri"
+        },
+        "readable_publish_date": {
+            "type": "string"
+        },
+        "social_image": {
+            "type": "string",
+            "format": "uri"
+        },
+        "tag_list": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tags": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "string"
+        },
+        "path": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "canonical_url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "positive_reactions_count": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "public_reactions_count": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "edited_at": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date-time"
+        },
+        "crossposted_at": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date-time"
+        },
+        "published_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "last_comment_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "published_timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "reading_time_minutes": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "twitter_username": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "github_username": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "user_id": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "website_url": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "uri"
+                },
+                "profile_image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "profile_image_90": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "organization": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "profile_image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "profile_image_90": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "flare_tag": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "bg_color_hex": {
+                    "type": "string"
+                },
+                "text_color_hex": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

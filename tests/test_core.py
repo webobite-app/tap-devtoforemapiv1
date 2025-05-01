@@ -8,7 +8,7 @@ from tap_devtoforemapiv1.tap import TapdevtoForemAPIV1
 
 SAMPLE_CONFIG = {
     "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
-    # TODO: Initialize minimal tap config
+    "api-key": "your_api_key_here",  # Add the API key here
 }
 
 

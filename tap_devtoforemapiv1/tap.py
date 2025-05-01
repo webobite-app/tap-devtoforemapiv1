@@ -2,12 +2,20 @@
 
 from __future__ import annotations
 
-from singer_sdk import Tap
+from typing import List
+
+from singer_sdk import Tap, Stream
 from singer_sdk import typing as th  # JSON schema typing helpers
 
 # TODO: Import your custom stream types here:
-from tap_devtoforemapiv1 import streams
+# from tap_devtoforemapiv1 import streams
+from tap_devtoforemapiv1.streams import (
+    ArticlesStream
+)
 
+STREAM_TYPES: List[Stream] = [
+    ArticlesStream
+]
 
 class TapdevtoForemAPIV1(Tap):
     """devtoForemAPIV1 tap class."""
@@ -17,52 +25,34 @@ class TapdevtoForemAPIV1(Tap):
     # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
-            "auth_token",
+            "api-key",
             th.StringType,
             required=True,
             secret=True,  # Flag config as protected.
-            title="Auth Token",
+            title="API Key",
             description="The token to authenticate against the API service",
         ),
-        th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType),
-            required=True,
-            title="Project IDs",
-            description="Project IDs to replicate",
-        ),
+        # th.Property(
+        #     "project_ids",
+        #     th.ArrayType(th.StringType),
+        #     required=True,
+        #     title="Project IDs",
+        #     description="Project IDs to replicate",
+        # ),
         th.Property(
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",
         ),
-        th.Property(
-            "api_url",
-            th.StringType,
-            title="API URL",
-            default="https://api.mysample.com",
-            description="The url for the API service",
-        ),
-        th.Property(
-            "user_agent",
-            th.StringType,
-            description=(
-                "A custom User-Agent header to send with each request. Default is "
-                "'<tap_name>/<tap_version>'"
-            ),
-        ),
     ).to_dict()
 
-    def discover_streams(self) -> list[streams.devtoForemAPIV1Stream]:
+    def discover_streams(self):
         """Return a list of discovered streams.
 
         Returns:
             A list of discovered streams.
         """
-        return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
-        ]
+        return [ArticlesStream(self)]
 
 
 if __name__ == "__main__":

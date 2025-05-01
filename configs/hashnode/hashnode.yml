@@ -1,0 +1,8 @@
+username: "{{ env.HASHNODE_USERNAME }}"
+api_key: "{{ env.HASHNODE_API_KEY }}"
+blog_slug: "{{ env.HASHNODE_BLOG_SLUG }}"
+start_date: "{{ env.HASHNODE_START_DATE }}"
+include_comments: "{{ env.HASHNODE_INCLUDE_COMMENTS }}"
+include_tags: "{{ env.HASHNODE_INCLUDE_TAGS }}"
+include_stats: "{{ env.HASHNODE_INCLUDE_STATS }}"
+base_url: "https://api.hashnode.com"

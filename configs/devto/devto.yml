@@ -1,0 +1,7 @@
+username: "{{ env.TAP_DEVTOFOREMAPIV1_USERNAME }}"
+api-key: "{{ env.TAP_DEVTOFOREMAPIV1_API_KEY }}"
+start_date: "{{ env.TAP_DEVTOFOREMAPIV1_START_DATE }}"
+base_url: "https://dev.to/api"
+blog_slug: "{{ env.TAP_DEVTOFOREMAPIV1_BLOG_SLUG }}"
+include_comments: "{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_COMMENTS }}"
+include_tags: "{{ env.TAP_DEVTOFOREMAPIV1_INCLUDE_TAGS }}"
